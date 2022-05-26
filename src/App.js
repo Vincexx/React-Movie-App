@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Footer from "./components/Footer";
 import MovieCard from "./components/MovieCard";
 
 // b71712c0
@@ -60,6 +61,7 @@ const App = () => {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 };

@@ -9,7 +9,7 @@ const MovieCard = ({ movie }) => {
       ></img>
       <div className="mt-3 flex items-center justify-between">
         <p className="font-bold text-white">MOVIE</p>
-        <p className="font-bold text-white">{movie.Year}</p>
+        <p className="font-thin text-white">{movie.Year}</p>
       </div>
       <p className="font-bold text-2xl text-white">{movie.Title}</p>
     </div>
