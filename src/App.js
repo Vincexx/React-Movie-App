@@ -48,14 +48,14 @@ const App = () => {
 
         {movies?.length > 0 ? (
           <div className="container">
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {movies.map((movie) => (
                 <MovieCard movie={movie} key={movie.imdbID} />
               ))}
             </div>
           </div>
         ) : (
-          <div>
+          <div className="text-center">
             <h1>No Movies Found</h1>
           </div>
         )}
