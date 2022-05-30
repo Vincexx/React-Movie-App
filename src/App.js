@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Footer from "./components/Footer";
 import MovieCard from "./components/MovieCard";
+import loadingImg from "./logo.svg";
 
 // b71712c0
 
@@ -29,13 +30,13 @@ const App = () => {
   };
 
   return (
-    <div className="App h-">
+    <div className="App bg-black">
       <div className="container mx-auto px-4 py-3">
         <div>
-          <div className="text-center">
-            <h1 className="font-bold text-4xl uppercase text-black">
-              LIST OF MOVIES
-            </h1>
+          <div>
+            <h3 className="text-white text-1xl uppercase font-extrabold tracking-tight hover:tracking-wide">
+              FREEMOVIES
+            </h3>
           </div>
           <div className="my-7 flex justify-center">
             <input
@@ -47,7 +48,7 @@ const App = () => {
               onKeyPress={handleKeyPress}
             ></input>
             <button
-              className="px-3 py-2 shadow-md ml-3 text-white bg-black hover:bg-slate-700"
+              className="px-3 py-2 shadow-md ml-3 text-white hover:bg-red-700 bg-red-600"
               onClick={() =>
                 searchMovies(searchTerm === "" ? "Batman" : searchTerm)
               }
@@ -58,7 +59,16 @@ const App = () => {
         </div>
 
         {loading ? (
-          <h1 className="text-center">Loading...</h1>
+          <div className="flex justify-center items-center">
+            <div
+              className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
+              role="status"
+            >
+              <span className="visually-hidden">
+                <img src={loadingImg} alt="img"></img>
+              </span>
+            </div>
+          </div>
         ) : movies?.length > 0 ? (
           <div className="container">
             <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

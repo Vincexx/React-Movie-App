@@ -7,11 +7,15 @@ const MovieCard = ({ movie }) => {
         src={movie.Poster ? movie.Poster : "https://placekitten.com/640/360"}
         alt="img"
       ></img>
-      <div className="mt-3 flex items-center justify-between">
-        <p className="font-bold text-white">MOVIE</p>
-        <p className="font-thin text-white">{movie.Year}</p>
+      <div className="my-3 flex items-center justify-between">
+        <p className="text-gray-300">MOVIE</p>
+        <p className="font-thin text-gray-300">{movie.Year}</p>
       </div>
-      <p className="font-bold text-2xl text-white">{movie.Title}</p>
+      <div>
+        <p className="font-bold text-1xl uppercase text-white leading-4">
+          {movie.Title}
+        </p>
+      </div>
     </div>
   );
 };
