@@ -34,28 +34,25 @@ const Index = (props) => {
   }, []);
 
   return (
-    <div className="App bg-black">
-      <div className="container mx-auto px-4 py-3">
-        <div>
-          <Header />
-          <div className="my-7 flex justify-center">
-            <input
-              type="text"
-              value={searchTerm}
-              className="py-2 px-3 shadow-md border-5 w-full"
-              placeholder="Search Movies"
-              onChange={(e) => setsearchTerm(e.target.value)}
-              onKeyPress={(e) => handleKeyPress(e)}
-            ></input>
-            <button
-              onClick={() =>
-                searchMovies(searchTerm === "" ? "Batman" : searchTerm)
-              }
-              className="px-3 py-2 shadow-md ml-3 text-white hover:bg-red-700 bg-red-600"
-            >
-              Search
-            </button>
-          </div>
+    <div className="">
+      <div className="">
+        <div className="my-7 flex justify-center">
+          <input
+            type="text"
+            value={searchTerm}
+            className="py-2 px-3 shadow-md border-5 w-full"
+            placeholder="Search Movies"
+            onChange={(e) => setsearchTerm(e.target.value)}
+            onKeyPress={(e) => handleKeyPress(e)}
+          ></input>
+          <button
+            onClick={() =>
+              searchMovies(searchTerm === "" ? "Batman" : searchTerm)
+            }
+            className="px-3 py-2 shadow-md ml-3 text-white hover:bg-red-700 bg-red-600"
+          >
+            Search
+          </button>
         </div>
 
         {loading ? (
@@ -71,7 +68,7 @@ const Index = (props) => {
           </div>
         ) : movies.payload?.length > 0 ? (
           <div className="container">
-            <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
               {movies.payload.map((movie) => (
                 <MovieCard movie={movie} key={movie.imdbID} />
               ))}
