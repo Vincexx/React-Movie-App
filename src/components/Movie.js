@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 const Movie = (props) => {
   const { title } = useParams();
-  const [movie, setMovie] = useState({});
+  // const [movie, setMovie] = useState({});
 
   const getMovie = async () => {
     const response = await fetch(`${props.API_URL}&t=${title}`);

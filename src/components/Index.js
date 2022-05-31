@@ -2,29 +2,36 @@ import { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 import loadingImg from "../logo.svg";
 import Header from "./Header";
+import { useSelector, useDispatch } from "react-redux";
+import { actions } from "../features/movie";
+import axios from "axios";
 
 const Index = (props) => {
-  const [movies, setMovies] = useState(null);
+  const dispatch = useDispatch();
+  const { movies, loading } = useSelector((state) => state.movie);
   const [searchTerm, setsearchTerm] = useState("");
-  const [loading, setLoading] = useState(true);
 
-  const searchMovies = async (title) => {
-    const response = await fetch(`${props.API_URL}&s=${title}`);
-    const data = await response.json();
-    console.log(data.Search);
-    setMovies(data.Search);
-    setLoading(false);
+  const searchMovies = (title) => {
+    const response = axios
+      .get(`${props.API_URL}&s=${title}`)
+      .then(async (res) => {
+        await dispatch(
+          actions.getMovies({
+            type: "FETCH",
+            payload: res.data.Search,
+          })
+        );
+      });
   };
-
-  useEffect(() => {
-    searchMovies("Batman");
-    console.log("Use Effect!");
-  }, []);
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter")
       searchMovies(searchTerm === "" ? "Batman" : searchTerm);
   };
+
+  useEffect(() => {
+    searchMovies("Superman");
+  }, []);
 
   return (
     <div className="App bg-black">
@@ -38,13 +45,13 @@ const Index = (props) => {
               className="py-2 px-3 shadow-md border-5 w-full"
               placeholder="Search Movies"
               onChange={(e) => setsearchTerm(e.target.value)}
-              onKeyPress={handleKeyPress}
+              onKeyPress={(e) => handleKeyPress(e)}
             ></input>
             <button
-              className="px-3 py-2 shadow-md ml-3 text-white hover:bg-red-700 bg-red-600"
               onClick={() =>
                 searchMovies(searchTerm === "" ? "Batman" : searchTerm)
               }
+              className="px-3 py-2 shadow-md ml-3 text-white hover:bg-red-700 bg-red-600"
             >
               Search
             </button>
@@ -62,10 +69,10 @@ const Index = (props) => {
               </span>
             </div>
           </div>
-        ) : movies?.length > 0 ? (
+        ) : movies.payload?.length > 0 ? (
           <div className="container">
             <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {movies.map((movie) => (
+              {movies.payload.map((movie) => (
                 <MovieCard movie={movie} key={movie.imdbID} />
               ))}
             </div>
