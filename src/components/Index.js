@@ -30,7 +30,7 @@ const Index = (props) => {
   };
 
   useEffect(() => {
-    searchMovies("Superman");
+    searchMovies("Batman");
   }, []);
 
   return (
