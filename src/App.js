@@ -12,7 +12,7 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-        <div className="bg-black">
+        <div className="bg-black min-h-screen">
           <div className="container md:mx-auto px-4">
             <Header />
             <Routes>
@@ -27,8 +27,8 @@ const App = () => {
                 ></Route>
               </Route>
             </Routes>
-            <Footer />
           </div>
+          <Footer />
         </div>
       </BrowserRouter>
     </>
