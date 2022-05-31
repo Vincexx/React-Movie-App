@@ -14,6 +14,11 @@ const movieSlice = createSlice({
     },
     getMovieByTitle(state, action) {
       state.movie = action.payload.payload;
+      state.loading = false;
+    },
+    clearData(state, action) {
+      state.loading = true;
+      state.movie = {};
     },
   },
 });

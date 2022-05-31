@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
-import loadingImg from "../logo.svg";
-import Header from "./Header";
 import { useSelector, useDispatch } from "react-redux";
 import { actions } from "../features/movie";
 import axios from "axios";
+import Loader from "./Loader";
 
 const Index = (props) => {
   const dispatch = useDispatch();
@@ -30,6 +29,7 @@ const Index = (props) => {
   };
 
   useEffect(() => {
+    dispatch(actions.clearData());
     searchMovies("Batman");
   }, []);
 
@@ -56,16 +56,7 @@ const Index = (props) => {
         </div>
 
         {loading ? (
-          <div className="flex justify-center items-center">
-            <div
-              className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
-              role="status"
-            >
-              <span className="visually-hidden">
-                <img src={loadingImg} alt="img"></img>
-              </span>
-            </div>
-          </div>
+          <Loader />
         ) : movies.payload?.length > 0 ? (
           <div className="container">
             <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
