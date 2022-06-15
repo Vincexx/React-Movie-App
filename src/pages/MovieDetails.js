@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { actions } from "../features/movie";
-import Loader from "./Loader";
+import Loader from "../components/Loader";
 
 const Movie = (props) => {
   const { title } = useParams();

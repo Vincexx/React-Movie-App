@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import MovieCard from "./MovieCard";
+import MovieCard from "../components/MovieCard";
 import { useSelector, useDispatch } from "react-redux";
 import { actions } from "../features/movie";
 import axios from "axios";
-import Loader from "./Loader";
+import Loader from "../components/Loader";
 
 const Index = (props) => {
   const dispatch = useDispatch();

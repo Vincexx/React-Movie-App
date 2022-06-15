@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Index from "./components/Index";
-import MovieDetails from "./components/MovieDetails";
+import Index from "./pages/Index";
+import MovieDetails from "./pages/MovieDetails";
 
 // b71712c0
 
