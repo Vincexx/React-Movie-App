@@ -6,7 +6,7 @@ const Header = () => {
     <div className="bg-black h-16 flex items-center border-b-2 border-slate-500">
       <Link to={"/React-Movie-App"}>
         <h3 className="text-red-600 text-1xl uppercase font-extrabold tracking-tight hover:text-white cursor-pointer">
-          FREEMOVIES
+          FREE MOVIES
         </h3>
       </Link>
     </div>
