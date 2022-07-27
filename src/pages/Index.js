@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { actions } from "../features/movie";
 import axios from "axios";
 import Loader from "../components/Loader";
+import Showcase from "../components/Showcase";
 
 const Index = (props) => {
   const dispatch = useDispatch();
@@ -25,18 +26,19 @@ const Index = (props) => {
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter")
-      searchMovies(searchTerm === "" ? "Batman" : searchTerm);
+      searchMovies(searchTerm === "" ? "Avengers" : searchTerm);
   };
 
   useEffect(() => {
     dispatch(actions.clearData());
-    searchMovies("Batman");
+    searchMovies("Avengers");
   }, []);
 
   return (
     <div className="">
       <div className="">
-        <div className="my-7 flex justify-center">
+        <Showcase />
+        <div className="my-3 flex justify-center mx-12">
           <input
             type="text"
             value={searchTerm}
